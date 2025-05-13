@@ -1,0 +1,311 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 97%;
+  --foreground: 0 0% 12%;
+  
+  --muted: 0 0% 90%;
+  --muted-foreground: 0 0% 45%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 12%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 12%;
+  
+  --border: 0 0% 88%;
+  --input: 0 0% 88%;
+  
+  --primary: 270 70% 50%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 0 0% 92%;
+  --secondary-foreground: 0 0% 12%;
+  
+  --accent: 0 0% 92%;
+  --accent-foreground: 0 0% 12%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --ring: 270 70% 50%;
+  --radius: 0.5rem;
+
+  --chat-user-bg: 210 100% 95%;
+  --chat-user-text: 210 100% 30%;
+  --chat-ai-bg: 0 0% 95%;
+  --chat-ai-border: 270 70% 50%;
+  
+  /* VIP Styles */
+  --vip-primary: 330 80% 50%;
+  --vip-primary-hover: 330 80% 45%;
+  --vip-gradient-start: 330 90% 50%;
+  --vip-gradient-end: 340 70% 30%;
+}
+
+.dark {
+  --background: 280 20% 5%;
+  --foreground: 0 0% 90%;
+  
+  --muted: 280 15% 15%;
+  --muted-foreground: 0 0% 65%;
+  
+  --popover: 280 20% 5%;
+  --popover-foreground: 0 0% 90%;
+  
+  --card: 280 20% 7%;
+  --card-foreground: 0 0% 90%;
+  
+  --border: 280 15% 20%;
+  --input: 280 15% 20%;
+  
+  --primary: 270 80% 50%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 280 15% 15%;
+  --secondary-foreground: 0 0% 90%;
+  
+  --accent: 280 15% 15%;
+  --accent-foreground: 0 0% 90%;
+  
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 0 0% 90%;
+  
+  --ring: 270 80% 50%;
+
+  --chat-user-bg: 210 100% 20%;
+  --chat-user-text: 210 100% 90%;
+  --chat-ai-bg: 280 15% 15%;
+  --chat-ai-border: 270 80% 50%;
+  
+  /* VIP Styles Dark Mode */
+  --vip-primary: 330 80% 50%;
+  --vip-primary-hover: 330 80% 45%;
+  --vip-gradient-start: 330 70% 45%;
+  --vip-gradient-end: 345 60% 25%;
+}
+
+/* VIP Mode */
+.vip-mode.dark {
+  --background: 340 20% 6%;
+  --foreground: 0 0% 90%;
+  
+  --muted: 340 15% 12%;
+  --muted-foreground: 0 0% 65%;
+  
+  --popover: 340 20% 6%;
+  --popover-foreground: 0 0% 90%;
+  
+  --card: 340 20% 8%;
+  --card-foreground: 0 0% 90%;
+  
+  --border: 340 15% 18%;
+  --input: 340 15% 18%;
+  
+  --primary: 330 80% 50%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 340 15% 15%;
+  --secondary-foreground: 0 0% 90%;
+  
+  --accent: 340 15% 15%;
+  --accent-foreground: 0 0% 90%;
+  
+  --ring: 330 80% 50%;
+
+  --chat-user-bg: 210 100% 20%;
+  --chat-user-text: 210 100% 90%;
+  --chat-ai-bg: 340 15% 12%;
+  --chat-ai-border: 330 80% 50%;
+}
+
+.vip-mode:not(.dark) {
+  --primary: 330 80% 50%;
+  --primary-foreground: 0 0% 100%;
+  --ring: 330 80% 50%;
+  --chat-ai-border: 330 80% 50%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground min-h-screen;
+  }
+
+  /* Custom scrollbar styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+  
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-muted;
+  }
+}
+
+/* Chat container height */
+.chat-container {
+  height: calc(100vh - 140px);
+}
+
+/* Message bubble animation */
+.message-bubble {
+  max-width: 80%;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Typing animation */
+.typing-animation::after {
+  content: "...";
+  animation: typing 1.5s infinite;
+}
+
+@keyframes typing {
+  0% { content: "."; }
+  33% { content: ".."; }
+  66% { content: "..."; }
+  100% { content: "."; }
+}
+
+/* Code block styling */
+pre {
+  @apply bg-muted p-3 rounded-md my-2 overflow-x-auto font-mono text-sm relative;
+}
+
+.code-block {
+  @apply relative bg-muted/80 backdrop-blur-sm p-3 rounded-md my-2 overflow-x-auto font-mono text-sm border border-primary/20;
+}
+
+.code-block-header {
+  @apply flex items-center justify-between bg-primary/10 px-4 py-2 rounded-t-md text-xs border-b border-primary/20;
+}
+
+.code-block-content {
+  @apply p-3 overflow-x-auto;
+}
+
+.code-copy-button {
+  @apply absolute top-2 right-2 p-1 rounded-md bg-primary/10 hover:bg-primary/20 transition-colors;
+}
+
+code {
+  @apply bg-muted px-1 py-0.5 rounded font-mono text-sm;
+}
+
+/* Animated text effect */
+.animated-text {
+  @apply inline-block relative;
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--primary)) 0%,
+    rgba(157, 78, 221, 1) 50%,
+    hsl(var(--primary)) 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+/* VIP mode animated text */
+.vip-mode .animated-text {
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--vip-primary)) 0%,
+    rgba(255, 105, 180, 1) 50%,
+    hsl(var(--vip-primary)) 100%
+  );
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Image upload styling */
+.image-upload {
+  @apply border-2 border-dashed border-primary/30 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-primary/50 transition-colors;
+}
+
+.image-preview {
+  @apply max-w-full max-h-64 object-contain rounded-md border border-border;
+}
+
+/* VIP Features Drawer */
+.vip-drawer-trigger {
+  @apply text-pink-300 hover:text-pink-200 flex items-center gap-1 p-1 rounded transition-colors;
+}
+
+.vip-drawer-content {
+  @apply p-2 bg-pink-950/10 rounded-md mt-1 border border-pink-500/20;
+}
+
+.vip-features-grid {
+  @apply grid grid-cols-2 gap-2 sm:grid-cols-4;
+}
+
+.vip-feature-button {
+  @apply flex items-center justify-center gap-1.5 py-2 px-3 rounded-md text-sm font-medium transition-all duration-200;
+}
+
+.vip-feature-button.active {
+  @apply bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-sm;
+}
+
+/* Text actions */
+.text-actions {
+  @apply flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity absolute right-2 top-2;
+}
+
+.text-action-button {
+  @apply p-1.5 rounded-md bg-primary/10 hover:bg-primary/20 transition-colors text-foreground/70 hover:text-foreground;
+}
+
+/* VIP features styling */
+.vip-features {
+  @apply flex flex-wrap gap-2 mb-3;
+}
+
+.vip-feature-button {
+  @apply relative flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-300;
+}
+
+.vip-feature-button.active {
+  @apply bg-gradient-to-r from-pink-500 to-pink-600 text-white shadow-md shadow-pink-500/20;
+}
+
+.vip-feature-button.active::before {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-full bg-white opacity-0 rounded-md;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.1; transform: scale(1.05); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+/* Indicator for active VIP features */
+.vip-indicator {
+  @apply flex items-center gap-1 text-xs text-pink-400 bg-pink-500/10 border border-pink-500/20 rounded-full px-2 py-0.5;
+}

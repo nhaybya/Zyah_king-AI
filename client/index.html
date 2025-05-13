@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Zyah King AI Chat</title>
+    <meta name="description" content="Zyah King AI Chat - Advanced AI assistant powered by Together.xyz API. Chat with a powerful AI assistant for information, assistance, and more." />
+    <meta property="og:title" content="Zyah King AI Chat" />
+    <meta property="og:description" content="Advanced AI assistant powered by Together.xyz API" />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- GitHub Pages base path script -->
+    <script>
+      // Dynamically add the base tag to handle GitHub Pages subdirectory
+      (function() {
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        if (isGitHubPages) {
+          // Extract repo name from the pathname
+          const pathSegments = window.location.pathname.split('/');
+          if (pathSegments.length > 1) {
+            const repoName = pathSegments[1];
+            const baseTag = document.createElement('base');
+            baseTag.href = `/${repoName}/`;
+            document.head.appendChild(baseTag);
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/main.tsx"></script>
+    <!-- Removed Replit banner script for GitHub Pages deployment -->
+  </body>
+</html>
